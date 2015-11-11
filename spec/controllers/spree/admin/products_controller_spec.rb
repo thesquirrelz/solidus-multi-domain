@@ -21,7 +21,8 @@ describe Spree::Admin::ProductsController do
         @product.stores << @store
 
         spree_put :update, :id => @product.to_param,
-                      :product => {:name => @product.name}
+                      :product => {:name => @product.name},
+                      update_store_ids: true
 
         @product.reload.store_ids.should be_empty
       end
