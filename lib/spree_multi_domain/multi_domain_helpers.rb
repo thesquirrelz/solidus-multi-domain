@@ -13,10 +13,13 @@ module SpreeMultiDomain
       @current_tracker ||= Spree::Tracker.current(store_key)
     end
 
+    def current_store
+      @current_store ||= Spree::Store.current(store_key) ? Spree::Store.current(store_key) : Spree::Store.first
+    end
+
     def get_taxonomies
-      @taxonomies ||= current_store.present? ? Spree::Taxonomy.where(["store_id = ?", current_store.id]) : Spree::Taxonomy
-      @taxonomies = @taxonomies.includes(:root => :children)
-      @taxonomies
+      @taxonomies ||= current_store.present? ? Spree::Taxonomy.where(store_id: current_store.id) : Spree::Taxonomy
+      @taxonomies.includes(root: :children)
     end
 
     def add_current_store_id_to_params
@@ -24,6 +27,7 @@ module SpreeMultiDomain
     end
 
     private
+
     def store_key
       request.headers['HTTP_SPREE_STORE'] || request.env['SERVER_NAME']
     end
