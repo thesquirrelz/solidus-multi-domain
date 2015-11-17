@@ -34,15 +34,6 @@ module SpreeMultiDomain
       end
     end
 
-    initializer 'current store decoration' do |app|
-      require 'spree/core/controller_helpers/store'
-      ::Spree::Core::ControllerHelpers::Store.module_eval do
-        def current_store
-          @current_store ||= Spree::Store.current(request.env['REQUEST_URI'].remove('http://','https://'))
-        end
-      end
-    end
-
     initializer 'spree.promo.register.promotions.rules' do |app|
       app.config.spree.promotions.rules << Spree::Promotion::Rules::Store
     end
