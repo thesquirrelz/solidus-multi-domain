@@ -1,4 +1,4 @@
-class RemoveStoreIdFromModels < ActiveRecord::Migration
+class RemoveStoreIdAndModels < ActiveRecord::Migration
   def change
     drop_table :spree_store_shipping_methods if table_exists?('spree_store_shipping_methods')
     remove_index :spree_store_shipping_methods, :store_id if index_exists?(:spree_store_shipping_methods, :store_id)
