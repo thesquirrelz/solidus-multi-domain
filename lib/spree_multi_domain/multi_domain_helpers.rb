@@ -6,11 +6,6 @@ module SpreeMultiDomain
 
       receiver.send :before_filter, :add_current_store_id_to_params
       receiver.send :helper_method, :current_store
-      receiver.send :helper_method, :current_tracker
-    end
-
-    def current_tracker
-      @current_tracker ||= Spree::Tracker.current(store_key)
     end
 
     def current_store
