@@ -1,3 +1,3 @@
 require 'sass/rails'
-require 'spree_core'
-require 'spree_multi_domain/engine'
+require 'solidus_core'
+require 'solidus_multi_domain/engine'
