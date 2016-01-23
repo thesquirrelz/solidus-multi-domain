@@ -1,4 +1,4 @@
-module SpreeMultiDomain
+module SolidusMultiDomain
   class Engine < Rails::Engine
     engine_name 'solidus_multi_domain'
 
