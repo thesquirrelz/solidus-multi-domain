@@ -1,7 +1,7 @@
 # encoding: UTF-8
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_multi_domain'
+  s.name        = 'solidus_multi_domain'
   s.version     = '3.0.0'
   s.summary     = 'Adds multiple site support to Spree'
   s.description = 'Multiple Spree stores on different domains - single unified backed for processing orders.'
@@ -17,11 +17,13 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  version = '~> 3.0.0'
-  s.add_dependency 'spree_core', version
-  s.add_dependency 'spree_backend', version
-  s.add_dependency 'spree_frontend', version
-  s.add_dependency 'spree_api', version
+  solidus_version = [">= 1.1.0.alpha", "< 2"]
+
+  s.add_runtime_dependency 'prawn', '~> 1.0.0'
+  s.add_dependency "solidus_api", solidus_version
+  s.add_dependency "solidus_backend", solidus_version
+  s.add_dependency "solidus_frontend", solidus_version
+  s.add_dependency "solidus_core", solidus_version
 
   s.add_development_dependency "rspec-rails",  "~> 3.2"
   s.add_development_dependency "simplecov"

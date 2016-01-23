@@ -1,4 +1,4 @@
-module SpreeMultiDomain
+module SolidusMultiDomain
   module MultiDomainHelpers
     def self.included(receiver)
       receiver.send :helper, 'spree/products'

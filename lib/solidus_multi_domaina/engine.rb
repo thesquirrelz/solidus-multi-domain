@@ -1,6 +1,6 @@
 module SpreeMultiDomain
   class Engine < Rails::Engine
-    engine_name 'spree_multi_domain'
+    engine_name 'solidus_multi_domain'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
@@ -12,7 +12,7 @@ module SpreeMultiDomain
       end
 
       Spree::Config.searcher_class = Spree::Search::MultiDomain
-      ApplicationController.send :include, SpreeMultiDomain::MultiDomainHelpers
+      ApplicationController.send :include, SolidusMultiDomain::MultiDomainHelpers
     end
 
     config.to_prepare &method(:activate).to_proc
